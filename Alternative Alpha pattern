@@ -1,0 +1,52 @@
+Sucessfully executed by Giri on 19/10/2025.
+===========================================================
+
+Core key:
+=> ASCII.
+=> Nested for Loop.
+=> Use of Printf("\n").
+=> Unique Logic for me. 
+
+===========================================================
+A 
+b C 
+d E f 
+G h I j 
+K l M n O 
+p Q r S t U 
+
+============================================================
+
+#include<stdio.h>
+
+void pat(int n)
+{
+    int t = 1;
+    int a = 65;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < i; j++)
+        {
+            if(t%2!=0)
+            {
+                printf("%c ", a++);
+                a+=32;
+            }
+            else
+            {
+                printf("%c ", a++);
+                a-=32;
+            }
+            t++;
+        }
+        printf("\n");
+    }
+}
+
+int main(void) 
+{
+    int n;
+    scanf("%d", &n);
+    
+    pat(n);
+}
