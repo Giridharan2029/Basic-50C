@@ -1,0 +1,85 @@
+INPUT:  27 11 2008 23 2007
+OUTPUT: 11 23 27 2007 2008 
+==================================================
+Core key:
+=> take one number, check with rest then decide for swap.
+=> simple Logic.
+=> Nested for loop.
+==================================================
+// for ascending order.
+
+#include <stdio.h>
+
+void sort(int n, int a[])
+{
+    for(int i = 0; i < n-1; i++)
+    {
+        for(int j = i+1 ; j < n; j++)
+        {
+            if(a[i] > a[j])
+            {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    
+    sort(n,arr);
+    
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+}
+==================================================
+//for decending order.
+
+#include <stdio.h>
+
+void sort(int n, int a[])
+{
+    for(int i = 0; i < n-1; i++)
+    {
+        for(int j = i+1 ; j < n; j++)
+        {
+            if(a[i] < a[j])
+            {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    
+    sort(n,arr);
+    
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+}
+==================================================
+Sucessfully code executed by Giri on 19/10/2025
