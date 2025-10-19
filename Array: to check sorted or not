@@ -1,4 +1,6 @@
 Check: Array is sorted
+
+==================================================
 #include <stdio.h>
 
 void Checksort(int n, int a[])
@@ -36,5 +38,6 @@ int main()
      Checksort(n,arr);
     
     return 0;
-    
 }
+==================================================
+
