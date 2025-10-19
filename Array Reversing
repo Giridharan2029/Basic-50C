@@ -1,0 +1,80 @@
+INPUT: 1 2 3 4 5 
+OUTPUT: 5 4 3 2 1 
+===========================================================
+Core key:
+=> This for reversing a single array.
+=> we can do easy techniques: swaping method or while loop
+===========================================================
+//By swapping Method.                    
+
+#include <stdio.h>
+
+void reverse(int n, int a[])
+{
+    for(int i = 0; i < n/2; i++)
+    {
+        int temp = a[i];
+        a[i] = a[n-1-i];
+        a[n-1-i] = temp;
+    }
+}
+
+int main(void)
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    
+    reverse(n,arr);
+    
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+}
+
+===========================================================
+//By Reversing Method.
+
+#include<stdio.h>
+
+void reverse(int n, int a[])
+{
+    int start = 0;
+    int end = n-1;
+    while(start < end)
+    {
+        int temp = a[start];
+        a[start] = a[end];
+        a[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+int main(void)
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    
+    reverse(n,arr);
+    
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+}
+
+===========================================================
+Sucessfully code executed by Giri on 19/10/2025
+
+
