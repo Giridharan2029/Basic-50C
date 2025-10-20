@@ -1,0 +1,84 @@
+
+An automorphic number is a number whose square ends with the same digits as the original number. 
+For example, 
+5 is an automorphic number because its square is 25, which ends in 5, and 76 is automorphic because its square is 5776, which ends in 76.
+
+===========================================================================================================================================
+
+25^2 = 625 is automorphic.
+12^2 = 144 is not automorphic.
+
+===========================================================================================================================================
+
+Core key:
+=> number of digit - 1 digit = number of  zeroes to check from last for equal to the result
+
+===========================================================================================================================================
+//Simple basic to uderstand.
+
+#include<stdio.h>
+
+void automorphic(int n)
+{
+    int sq = 0;
+    sq = n*n;
+    if(sq%10==n||sq%100==n||sq%1000==n)
+    {
+        printf("Automorphic");
+    }
+    else
+    {
+        printf("Not an Automorphic");
+    }
+}
+
+int main(void) 
+{
+    int n;
+    scanf("%d",&n);
+    int temp = n;
+    
+    automorphic(n);
+    
+    return 0;
+}
+
+===========================================================================================================================================
+//simple and lit logic to use for any number.
+
+#include<stdio.h>
+
+void automorphic(int n)
+{
+    int sq = n * n;
+    int temp = n;
+    int divisor = 1;
+    
+    // Calculate the divisor (10^number_of_digits)
+    while(temp > 0)
+    {
+        divisor *= 10;
+        temp /= 10;
+    }
+    
+    if(sq % divisor == n)
+    {
+        printf("Automorphic");
+    }
+    else
+    {
+        printf("Not an Automorphic");
+    }
+}
+
+int main(void) 
+{
+    int n;
+    scanf("%d", &n);
+    automorphic(n);
+    return 0;
+}
+
+===========================================================================================================================================
+
+Sucessfully code executed ny Giri on 20/10/2025
