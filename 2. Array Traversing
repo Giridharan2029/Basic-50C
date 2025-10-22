@@ -1,0 +1,59 @@
+Traversing:
+Visiting each element one by one from start to end.
+=====================================================
+
+WITHOUT FUNCTION:
+
+#include<stdio.h>
+
+int main(void) 
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    
+    printf("Traversing array: ");
+    
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    
+    printf("\n");
+    
+}
+=====================================================
+
+WITH FUNCTION:
+
+#include<stdio.h>
+
+void traverseArray(int n,int arr[])
+{
+    printf("Traversing array: ");
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main(void) 
+{
+    int n;
+    scanf("%d", &n);
+    int arr[n];
+    
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    traverseArray(n, arr);
+}
+==============================================================
+Both programmes are sucessfully Executed by Giri on 22/10/2025.
