@@ -1,0 +1,293 @@
+// Function to print array
+void printArray(int arr[], int n) {
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+==========================================================================
+ 1. TRAVERSING
+void traverseArray(int arr[], int n) {
+    printf("Traversing array: ");
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+==========================================================================
+ 2. INSERTION
+int insertElement(int arr[], int n, int pos, int value, int capacity) {
+    if(n >= capacity) {
+        printf("Array is full!\n");
+        return n;
+    }
+    if(pos < 0 || pos > n) {
+        printf("Invalid position!\n");
+        return n;
+    }
+    
+    for(int i = n; i > pos; i--) {
+        arr[i] = arr[i-1];
+    }
+    arr[pos] = value;
+    return n + 1;
+}
+
+====================================================================================================================================================================================================================
+
+ 3. DELETION
+int deleteElement(int arr[], int n, int pos) {
+    if(pos < 0 || pos >= n) {
+        printf("Invalid position!\n");
+        return n;
+    }
+    
+    for(int i = pos; i < n-1; i++) {
+        arr[i] = arr[i+1];
+    }
+    return n - 1;
+}
+
+====================================================================================================================================================================================================================
+
+ 4. LINEAR SEARCH
+int linearSearch(int arr[], int n, int key) {
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == key)
+            return i;
+    }
+    return -1;
+}
+
+====================================================================================================================================================================================================================
+
+ 5. BINARY SEARCH (for sorted array)
+int binarySearch(int arr[], int n, int key) {
+    int low = 0, high = n - 1;
+    while(low <= high) {
+        int mid = low + (high - low) / 2;
+        if(arr[mid] == key)
+            return mid;
+        else if(arr[mid] < key)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1;
+}
+
+====================================================================================================================================================================================================================
+
+ 6. REVERSING
+void reverseArray(int arr[], int n) {
+    int start = 0, end = n - 1;
+    while(start < end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+====================================================================================================================================================================================================================
+
+ 7. ROTATING LEFT
+void rotateLeft(int arr[], int n, int d) {
+    d = d % n;
+    int temp[d];
+    
+    // Store first d elements
+    for(int i = 0; i < d; i++)
+        temp[i] = arr[i];
+    
+    // Shift remaining elements
+    for(int i = 0; i < n - d; i++)
+        arr[i] = arr[i + d];
+    
+    // Copy back temp elements
+    for(int i = 0; i < d; i++)
+        arr[n - d + i] = temp[i];
+}
+
+====================================================================================================================================================================================================================
+
+ 8. ROTATING RIGHT
+void rotateRight(int arr[], int n, int d) {
+    d = d % n;
+    rotateLeft(arr, n, n - d);
+}
+
+====================================================================================================================================================================================================================
+
+ 9. FINDING MAXIMUM
+int findMax(int arr[], int n) {
+    int max = arr[0];
+    for(int i = 1; i < n; i++) {
+        if(arr[i] > max)
+            max = arr[i];
+    }
+    return max;
+}
+
+====================================================================================================================================================================================================================
+
+ 10. FINDING MINIMUM
+int findMin(int arr[], int n) {
+    int min = arr[0];
+    for(int i = 1; i < n; i++) {
+        if(arr[i] < min)
+            min = arr[i];
+    }
+    return min;
+}
+
+====================================================================================================================================================================================================================
+
+ 11. FINDING BOTH MIN AND MAX (Efficient)
+void findMinMax(int arr[], int n, int *min, int *max) {
+    *min = *max = arr[0];
+    for(int i = 1; i < n; i++) {
+        if(arr[i] > *max)
+            *max = arr[i];
+        if(arr[i] < *min)
+            *min = arr[i];
+    }
+}
+
+====================================================================================================================================================================================================================
+
+ 12. SECOND LARGEST
+int secondLargest(int arr[], int n) {
+    int first = INT_MIN, second = INT_MIN;
+    for(int i = 0; i < n; i++) {
+        if(arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } else if(arr[i] > second && arr[i] != first) {
+            second = arr[i];
+        }
+    }
+    return (second == INT_MIN) ? -1 : second;
+}
+
+====================================================================================================================================================================================================================
+
+ 13. BUBBLE SORT
+void bubbleSort(int arr[], int n) {
+    for(int i = 0; i < n-1; i++) {
+        for(int j = 0; j < n-i-1; j++) {
+            if(arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+}
+
+====================================================================================================================================================================================================================
+
+ 14. SELECTION SORT
+void selectionSort(int arr[], int n) {
+    for(int i = 0; i < n-1; i++) {
+        int minIdx = i;
+        for(int j = i+1; j < n; j++) {
+            if(arr[j] < arr[minIdx])
+                minIdx = j;
+        }
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+====================================================================================================================================================================================================================
+
+ 15. INSERTION SORT
+void insertionSort(int arr[], int n) {
+    for(int i = 1; i < n; i++) {
+        int key = arr[i];
+        int j = i - 1;
+        while(j >= 0 && arr[j] > key) {
+            arr[j+1] = arr[j];
+            j--;
+        }
+        arr[j+1] = key;
+    }
+}
+
+====================================================================================================================================================================================================================
+
+ 16. MERGE TWO ARRAYS
+void mergeArrays(int arr1[], int n1, int arr2[], int n2, int result[]) {
+    for(int i = 0; i < n1; i++)
+        result[i] = arr1[i];
+    for(int i = 0; i < n2; i++)
+        result[n1 + i] = arr2[i];
+}
+
+====================================================================================================================================================================================================================
+
+ 17. REMOVING DUPLICATES (from sorted array)
+int removeDuplicates(int arr[], int n) {
+    if(n == 0 || n == 1)
+        return n;
+    
+    int j = 0;
+    for(int i = 0; i < n-1; i++) {
+        if(arr[i] != arr[i+1])
+            arr[j++] = arr[i];
+    }
+    arr[j++] = arr[n-1];
+    return j;
+}
+
+====================================================================================================================================================================================================================
+
+ 18. KADANE'S ALGORITHM (Maximum Subarray Sum)
+int maxSubarraySum(int arr[], int n) {
+    int maxSoFar = arr[0];
+    int maxEndingHere = arr[0];
+    
+    for(int i = 1; i < n; i++) {
+        maxEndingHere = (arr[i] > maxEndingHere + arr[i]) ? arr[i] : maxEndingHere + arr[i];
+        maxSoFar = (maxSoFar > maxEndingHere) ? maxSoFar : maxEndingHere;
+    }
+    return maxSoFar;
+}
+
+====================================================================================================================================================================================================================
+
+ 19. TWO POINTER TECHNIQUE (Check if pair exists with given sum)
+int pairWithSum(int arr[], int n, int targetSum) {
+    int left = 0, right = n - 1;
+    while(left < right) {
+        int currentSum = arr[left] + arr[right];
+        if(currentSum == targetSum) {
+            printf("Pair found: (%d, %d)\n", arr[left], arr[right]);
+            return 1;
+        }
+        else if(currentSum < targetSum)
+            left++;
+        else
+            right--;
+    }
+    return 0;
+}
+
+====================================================================================================================================================================================================================
+
+ 20. PREFIX SUM
+void prefixSum(int arr[], int n, int prefix[]) {
+    prefix[0] = arr[0];
+    for(int i = 1; i < n; i++) {
+        prefix[i] = prefix[i-1] + arr[i];
+    }
+}
+
+====================================================================================================================================================================================================================
+
+this all executed and verified by Giri. (22/10/2025)
